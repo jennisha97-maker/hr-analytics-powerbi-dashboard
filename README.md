@@ -253,10 +253,11 @@ CALCULATE(
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/jennisha-k-66a195191)
 [![Email](https://img.shields.io/badge/Email-D14836?style=flat&logo=gmail&logoColor=white)](mailto:jennisha97@gmail.com)
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white)](https://github.com/your-username)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white)](https://github.com/jennisha97-maker)
 
 ---
 
 > *"Turning Data into Decisions"*
 
 ⭐ If this project helped you, please consider starring the repository!
+[![GitHub](https://img.shields.io/badge/GitHub...)](https://github.com/jennisha97-maker)
