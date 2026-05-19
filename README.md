@@ -54,7 +54,8 @@ This end-to-end HR Analytics Dashboard was built in Microsoft Power BI to give H
 ## 📸 Live Dashboard Preview
 
 ### Overview Page
-![HR Analytics Dashboard Overview](screenshots/01_dashboard_overview.png)
+![HR Analytics Dashboard Overview](screenshots/dashboard_overview.png
+)
 
 > *Dashboard showing KPI cards, attrition by department, salary slab, job role & satisfaction matrix, age group distribution, gender split, and experience trend — all filterable by age group (18-25, 26-35, 36-45, 46-55, 55+)*
 
