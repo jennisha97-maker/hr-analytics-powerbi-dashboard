@@ -141,4 +141,123 @@ The experience-trend line shows attrition spikes at the **0–5 year mark**, pea
 | Star Schema Modelling | Fact-dimension table relationships in Power BI model view |
 | GitHub | Version control and portfolio hosting |
 
+4. If a data source path error appears:
+   - Click **Transform Data** → **Data Source Settings**
+   - Update the file path to your local `dataset/raw/` folder
+
+5. Click **Refresh** in Power BI Desktop to reload all visuals
+
+6. Use the **Age Group buttons** (18-25, 26-35, 36-45, 46-55, 55+) to filter the entire dashboard
+
+---
+
+## 📐 DAX Measures
+
+```dax
+// --- ATTRITION RATE ---
+Attrition Rate =
+DIVIDE(
+    COUNTROWS(FILTER('HR_Data', 'HR_Data'[Attrition] = "Yes")),
+    COUNTROWS('HR_Data'),
+    0
+) * 100
+
+// --- ACTIVE EMPLOYEES ---
+Active Employees =
+COUNTROWS(FILTER('HR_Data', 'HR_Data'[Attrition] = "No"))
+
+// --- ATTRITION COUNT ---
+Attrition Count =
+COUNTROWS(FILTER('HR_Data', 'HR_Data'[Attrition] = "Yes"))
+
+// --- AVERAGE AGE ---
+Avg Age =
+AVERAGE('HR_Data'[Age])
+
+// --- AVERAGE EXPERIENCE ---
+Avg Experience =
+AVERAGE('HR_Data'[YearsAtCompany])
+
+// --- ATTRITION BY DEPARTMENT % ---
+Dept Attrition % =
+DIVIDE(
+    CALCULATE([Attrition Count],
+        ALLEXCEPT('HR_Data', 'HR_Data'[Department])),
+    CALCULATE(COUNTROWS('HR_Data'),
+        ALLEXCEPT('HR_Data', 'HR_Data'[Department])),
+    0
+) * 100
+
+// --- SATISFACTION SCORE BY ROLE (Matrix) ---
+Avg Satisfaction by Role =
+CALCULATE(
+    AVERAGE('HR_Data'[JobSatisfaction]),
+    ALLEXCEPT('HR_Data', 'HR_Data'[JobRole])
+)
+```
+
+---
+
+## 🧹 Data Cleaning Steps
+
+| # | Step | What Was Done |
+|---|---|---|
+| 01 | Promoted Headers | Set first row as column names |
+| 02 | Data Type Enforcement | Age, Salary, Experience → Numeric |
+| 03 | Attrition Flag | Converted Yes/No → 1/0 for aggregation |
+| 04 | Removed Redundant Columns | Dropped EmployeeCount, StandardHours, Over18 |
+| 05 | Age Band Column | Created groupings: 18-25, 26-35, 36-45, 46-55, 55+ |
+| 06 | Salary Slab Column | Grouped MonthlyIncome into LPA bands: 0-3, 3-6, 6-10, 10+ |
+| 07 | Null Validation | Confirmed 0 null values across all columns |
+| 08 | Department Standardization | Ensured consistent naming across department field |
+
+---
+
+## 💡 Business Recommendations
+
+| Priority | Insight | Recommendation | Expected Impact |
+|---|---|---|---|
+| 🔴 Critical | Finance dept: 55% attrition | Immediate compensation review + 1:1 retention conversations for Finance team | Reduce Finance exits by 30% |
+| 🔴 Critical | 6–10 LPA band: highest exits | Market salary benchmarking; bring mid-band salaries to 75th percentile | Reduce mid-band attrition by 25% |
+| 🔴 High | Sales Representatives: 12 exits | Introduce performance bonuses, clear promotion path, weekly coaching | Reduce Sales Rep attrition by 35% |
+| 🟡 High | Experience spike at 2–3 years | Launch "Year 2 Engagement Programme" — mentoring, skill development, internal mobility | Retain 40% of at-risk junior staff |
+| 🟡 Medium | Satisfaction score 1 → high attrition | Quarterly pulse surveys; auto-flag any score ≤ 2 for manager action | Reduce dissatisfaction-driven exits |
+| 🟢 Monitor | 26–35 age band dominates workforce | Invest in leadership development and fast-track programmes for this cohort | Long-term retention of core workforce |
+
+---
+
+## 🚀 Future Enhancements
+
+- [ ] **Predictive Attrition Model** — Integrate Python/Azure ML to assign flight-risk scores per employee
+- [ ] **Time Intelligence** — Add month-over-month attrition trend using DAX SAMEPERIODLASTYEAR
+- [ ] **Row-Level Security (RLS)** — Restrict department-level data access per HR Business Partner
+- [ ] **Live Data Connection** — Replace Excel source with SharePoint Online or Azure SQL
+- [ ] **Mobile Layout** — Design Power BI mobile view for on-the-go HR manager access
+- [ ] **What-If Salary Scenario** — Model projected attrition impact of 5%/10%/15% salary increments
+
+---
+
+## 📚 Key Learnings
+
+- DAX filter context vs. row context is foundational — `CALCULATE()` was the most critical function in this project
+- Visual design communicates faster than data tables — chart type selection directly affects decision speed
+- The satisfaction matrix (job role × score) was the most complex visual to build but delivered the richest insight
+- Age group buttons (bookmark-based filtering) significantly improved dashboard usability for non-technical HR users
+- Star schema modelling reduced DAX complexity compared to a flat table approach
+
+---
+
+## 🤝 Connect with Me
+
+**Jennisha K** | Data Analyst | Chennai, Tamil Nadu
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/jennisha-k-66a195191)
+[![Email](https://img.shields.io/badge/Email-D14836?style=flat&logo=gmail&logoColor=white)](mailto:jennisha97@gmail.com)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white)](https://github.com/your-username)
+
+---
+
+> *"Turning Data into Decisions"*
+
+⭐ If this project helped you, please consider starring the repository!
 
