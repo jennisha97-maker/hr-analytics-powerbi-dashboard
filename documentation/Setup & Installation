@@ -1,0 +1,28 @@
+## ⚙️ Setup & Installation
+
+### Prerequisites
+- Microsoft Power BI Desktop (Free) — [Download here](https://powerbi.microsoft.com/desktop/)
+- Microsoft Excel (for dataset viewing)
+
+### Steps
+
+1. Clone the repository:
+```bash
+git clone https://github.com/your-username/hr-analytics-powerbi-dashboard.git
+```
+
+2. Navigate to the project folder:
+```bash
+cd hr-analytics-powerbi-dashboard
+```
+
+3. Open the dashboard:
+Open: dashboard/HR_Analytics_Dashboard.pbix
+
+4. If a data source path error appears:
+   - Click **Transform Data** → **Data Source Settings**
+   - Update the file path to your local `dataset/raw/` folder
+
+5. Click **Refresh** in Power BI Desktop to reload all visuals
+
+6. Use the **Age Group buttons** (18-25, 26-35, 36-45, 46-55, 55+) to filter the entire dashboard
