@@ -140,6 +140,4 @@ The experience-trend line shows attrition spikes at the **0–5 year mark**, pea
 | Star Schema Modelling | Fact-dimension table relationships in Power BI model view |
 | GitHub | Version control and portfolio hosting |
 
----
 
-## 📁 Folder Structure
