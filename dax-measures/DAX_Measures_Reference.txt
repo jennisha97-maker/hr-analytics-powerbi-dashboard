@@ -1,0 +1,41 @@
+// --- ATTRITION RATE ---
+Attrition Rate =
+DIVIDE(
+    COUNTROWS(FILTER('FactEmployee', 'FactEmployee'[Attrition] = "Yes")),
+    COUNTROWS('FactEmployee'),
+    0
+) * 100
+
+// --- ACTIVE EMPLOYEES ---
+Active Employees =
+COUNTROWS(FILTER('FactEmployee', 'FactEmployee'[Attrition] = "No"))
+
+// --- ATTRITION COUNT ---
+Attrition Count =
+COUNTROWS(FILTER('FactEmployee', 'FactEmployee'[Attrition] = "Yes"))
+
+// --- SATISFACTION COMPOSITE INDEX ---
+Satisfaction Index =
+DIVIDE(
+    SUMX('FactEmployee',
+        'FactEmployee'[JobSatisfaction] +
+        'FactEmployee'[EnvironmentSatisfaction] +
+        'FactEmployee'[RelationshipSatisfaction]),
+    COUNTROWS('FactEmployee') * 3,
+    0
+)
+
+// --- OVERTIME ATTRITION RATE ---
+Overtime Attrition Rate =
+CALCULATE(
+    [Attrition Rate],
+    'FactEmployee'[OverTime] = "Yes"
+)
+
+// --- DEPT ATTRITION % ---
+Dept Attrition % =
+DIVIDE(
+    CALCULATE([Attrition Count], ALLEXCEPT('FactEmployee', 'FactEmployee'[Department])),
+    CALCULATE(COUNTROWS('FactEmployee'), ALLEXCEPT('FactEmployee', 'FactEmployee'[Department])),
+    0
+) * 100
