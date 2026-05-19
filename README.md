@@ -97,3 +97,5 @@ backward-looking reports. The core challenges addressed by this dashboard:
 | Avg. Performance Rating      | 3.15/4   | > 3.5      |
 | Avg. Work-Life Balance Score | 2.76/4   | > 3.0      |
 
+Screenshot
+[screenshots/dashboard_overview.png]
