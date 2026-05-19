@@ -1,41 +1,43 @@
+## 📐 DAX Measures
+
+```dax
 // --- ATTRITION RATE ---
 Attrition Rate =
 DIVIDE(
-    COUNTROWS(FILTER('FactEmployee', 'FactEmployee'[Attrition] = "Yes")),
-    COUNTROWS('FactEmployee'),
+    COUNTROWS(FILTER('HR_Data', 'HR_Data'[Attrition] = "Yes")),
+    COUNTROWS('HR_Data'),
     0
 ) * 100
 
 // --- ACTIVE EMPLOYEES ---
 Active Employees =
-COUNTROWS(FILTER('FactEmployee', 'FactEmployee'[Attrition] = "No"))
+COUNTROWS(FILTER('HR_Data', 'HR_Data'[Attrition] = "No"))
 
 // --- ATTRITION COUNT ---
 Attrition Count =
-COUNTROWS(FILTER('FactEmployee', 'FactEmployee'[Attrition] = "Yes"))
+COUNTROWS(FILTER('HR_Data', 'HR_Data'[Attrition] = "Yes"))
 
-// --- SATISFACTION COMPOSITE INDEX ---
-Satisfaction Index =
-DIVIDE(
-    SUMX('FactEmployee',
-        'FactEmployee'[JobSatisfaction] +
-        'FactEmployee'[EnvironmentSatisfaction] +
-        'FactEmployee'[RelationshipSatisfaction]),
-    COUNTROWS('FactEmployee') * 3,
-    0
-)
+// --- AVERAGE AGE ---
+Avg Age =
+AVERAGE('HR_Data'[Age])
 
-// --- OVERTIME ATTRITION RATE ---
-Overtime Attrition Rate =
-CALCULATE(
-    [Attrition Rate],
-    'FactEmployee'[OverTime] = "Yes"
-)
+// --- AVERAGE EXPERIENCE ---
+Avg Experience =
+AVERAGE('HR_Data'[YearsAtCompany])
 
-// --- DEPT ATTRITION % ---
+// --- ATTRITION BY DEPARTMENT % ---
 Dept Attrition % =
 DIVIDE(
-    CALCULATE([Attrition Count], ALLEXCEPT('FactEmployee', 'FactEmployee'[Department])),
-    CALCULATE(COUNTROWS('FactEmployee'), ALLEXCEPT('FactEmployee', 'FactEmployee'[Department])),
+    CALCULATE([Attrition Count],
+        ALLEXCEPT('HR_Data', 'HR_Data'[Department])),
+    CALCULATE(COUNTROWS('HR_Data'),
+        ALLEXCEPT('HR_Data', 'HR_Data'[Department])),
     0
 ) * 100
+
+// --- SATISFACTION SCORE BY ROLE (Matrix) ---
+Avg Satisfaction by Role =
+CALCULATE(
+    AVERAGE('HR_Data'[JobSatisfaction]),
+    ALLEXCEPT('HR_Data', 'HR_Data'[JobRole])
+)
