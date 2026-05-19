@@ -1,104 +1,145 @@
-# hr-analytics-powerbi-dashboard
-HR Analytics Dashboard built in Power BI — analyzing 1,470 employee records to uncover attrition patterns, compensation gaps, and engagement insights using DAX, Power Query, and star-schema modelling.
-
-# 📊 HR Analytics Dashboard: Workforce Attrition, Performance & Engagement
+# 📊 HR Analytics Dashboard — Workforce Attrition & People Intelligence
 
 ![Power BI](https://img.shields.io/badge/Power%20BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
 ![DAX](https://img.shields.io/badge/DAX-0078D4?style=for-the-badge&logo=microsoft&logoColor=white)
 ![Excel](https://img.shields.io/badge/Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white)
 ![Power Query](https://img.shields.io/badge/Power%20Query-0078D4?style=for-the-badge&logo=microsoft&logoColor=white)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Complete-brightgreen?style=for-the-badge)
+![Domain](https://img.shields.io/badge/Domain-HR%20Analytics-blueviolet?style=for-the-badge)
 
-> **A comprehensive HR Analytics solution built in Power BI that transforms raw
-> workforce data into actionable people intelligence — enabling HR leaders and
-> business stakeholders to reduce attrition, improve retention, and optimize
-> talent strategy through data-driven decision-making.**
+> **An interactive HR Analytics Dashboard built in Microsoft Power BI that transforms raw employee data into actionable workforce intelligence — enabling HR leaders to identify attrition drivers, analyze department-wise risk, and make data-driven retention decisions.**
 
 ---
 
 ## 📋 Table of Contents
 
 - [Project Overview](#project-overview)
+- [Live Dashboard Preview](#live-dashboard-preview)
 - [Business Problem](#business-problem)
 - [Objectives](#objectives)
 - [KPIs & Metrics](#kpis--metrics)
 - [Dashboard Insights](#dashboard-insights)
 - [Tools & Technologies](#tools--technologies)
-- [Project Architecture](#project-architecture)
 - [Folder Structure](#folder-structure)
 - [Setup & Installation](#setup--installation)
-- [Project Workflow](#project-workflow)
 - [DAX Measures](#dax-measures)
+- [Data Cleaning Steps](#data-cleaning-steps)
 - [Business Recommendations](#business-recommendations)
 - [Future Enhancements](#future-enhancements)
 - [Key Learnings](#key-learnings)
-- [Contributing](#contributing)
-- [License](#license)
 - [Connect](#connect)
 
 ---
 
 ## 🎯 Project Overview
 
-This project presents an end-to-end HR Analytics Dashboard developed in
-Microsoft Power BI, designed to give HR departments and C-suite leaders a
-360-degree view of their workforce. The dashboard integrates employee
-demographic data, attrition records, performance ratings, satisfaction
-scores, and compensation data to surface patterns that are invisible in
-traditional spreadsheet-based reporting.
+This end-to-end HR Analytics Dashboard was built in Microsoft Power BI to give HR departments and business leaders a 360-degree view of workforce health. The dashboard integrates employee demographic, compensation, department, and satisfaction data to surface attrition patterns that are invisible in traditional spreadsheet-based reporting.
 
-| Attribute         | Details                                      |
-|-------------------|----------------------------------------------|
-| Tool              | Microsoft Power BI Desktop                   |
-| Domain            | Human Resources / People Analytics           |
-| Dataset           | IBM HR Analytics Employee Attrition Dataset  |
-| Dashboard Pages   | 4 (Overview, Attrition, Performance, Details)|
-| Total Records     | 1,470 employees                              |
-| Measures Created  | 25+ DAX measures                             |
-| Visuals Used      | 18+ chart types                              |
+| Attribute | Details |
+|---|---|
+| Tool | Microsoft Power BI Desktop |
+| Domain | Human Resources / People Analytics |
+| Total Employees Analyzed | 588 |
+| Active Employees | 477 |
+| Attrition Count | 111 |
+| Overall Attrition Rate | 18.9% |
+| Average Employee Age | 30.98 years |
+| Average Experience | 5.95 years |
+| Dashboard Pages | Multi-page with Age Group Filter |
+| Visuals Used | Donut chart, bar chart, matrix table, KPI cards, trend line |
+
+---
+
+## 📸 Live Dashboard Preview
+
+### Overview Page
+![HR Analytics Dashboard Overview](screenshots/01_dashboard_overview.png)
+
+> *Dashboard showing KPI cards, attrition by department, salary slab, job role & satisfaction matrix, age group distribution, gender split, and experience trend — all filterable by age group (18-25, 26-35, 36-45, 46-55, 55+)*
 
 ---
 
 ## 🏢 Business Problem
 
-Organizations lose between 50%–200% of an employee's annual salary when
-that employee exits. Despite this, most HR teams rely on reactive,
-backward-looking reports. The core challenges addressed by this dashboard:
+The organization employs **588 staff** and is experiencing an attrition rate of **18.9%** — nearly double the industry benchmark of 10%. HR leadership lacked a unified, interactive view of workforce data to understand:
 
-- **High Attrition Costs:** No early-warning system to flag at-risk employees
-- **Departmental Blind Spots:** Leadership unable to compare attrition across functions
-- **Satisfaction Disconnect:** No correlation view between satisfaction, performance & exit
-- **Compensation Inequity:** Pay disparity hidden across gender and job roles
-- **Demographic Risks:** Age and tenure-based flight risk patterns undetected
+- **Which departments** are losing the most employees
+- **Which salary bands** are highest attrition risk
+- **Which job roles** have the lowest satisfaction scores
+- **What age and experience cohorts** are most vulnerable to exit
+- **How gender distribution** maps to attrition patterns
+
+Without this visibility, retention interventions were reactive and poorly targeted.
 
 ---
 
 ## 🎯 Objectives
 
-1. Build an interactive, drill-through enabled HR dashboard in Power BI
-2. Quantify and visualize employee attrition patterns by department, age, tenure & role
-3. Correlate job satisfaction, work-life balance scores with attrition outcomes
-4. Identify high-risk employee segments using demographic and performance data
-5. Surface compensation and promotion gap insights across gender and grades
-6. Provide actionable recommendations to reduce voluntary attrition by 15–20%
+1. Build a filterable, multi-view HR dashboard in Power BI with age-group segmentation
+2. Quantify attrition across departments, salary slabs, job roles, and gender
+3. Cross-reference job satisfaction scores (1–4 scale) with attrition counts by role
+4. Identify high-risk employee cohorts using demographic and compensation data
+5. Surface actionable retention recommendations for HR leadership
 
 ---
 
 ## 📈 KPIs & Metrics
 
-| KPI                          | Value    | Benchmark  |
-|------------------------------|----------|------------|
-| Overall Attrition Rate       | 16.1%    | < 10%      |
-| Total Employees              | 1,470    | -          |
-| Active Employees             | 1,233    | -          |
-| Avg. Monthly Income          | ₹65,029  | -          |
-| Avg. Years at Company        | 7.0 yrs  | -          |
-| Avg. Job Satisfaction Score  | 2.73/4   | > 3.0      |
-| Avg. Performance Rating      | 3.15/4   | > 3.5      |
-| Avg. Work-Life Balance Score | 2.76/4   | > 3.0      |
+| KPI | Value | Status |
+|---|---|---|
+| Total Employees | 588 | — |
+| Active Employees | 477 | — |
+| Attrition Count | 111 | — |
+| Attrition Rate | 18.9% | 🔴 Above 10% benchmark |
+| Average Age | 30.98 years | — |
+| Average Experience | 5.95 years | — |
+| Finance Dept Attrition | 55% of dept | 🔴 Critical |
+| HR Dept Attrition | 30% of dept | 🟡 High |
+| Administration Dept Attrition | 5% of dept | 🟢 Low |
+| Highest Attrition Salary Band | 6–10 LPA (157 exits) | 🔴 Priority |
+| Sales Rep Attrition | 12 employees | 🔴 Highest by role |
 
-## 📸 Dashboard Screenshots
+---
 
-### Overview Page
-![Dashboard Overview](screenshots/dashboard_overview.png)
+## 📊 Dashboard Insights
 
+### 1. Department-Wise Attrition
+Finance leads attrition at **55% (61 employees)**, followed by Human Resources at **30% (33 employees)**. Administration shows the lowest attrition at just **5% (3 employees)**. This concentration in Finance and HR signals systemic issues in these functions — likely linked to workload, compensation, or growth opportunities.
+
+### 2. Attrition by Salary Slab
+The **6–10 LPA band** records the highest attrition with **157 exits**, followed by the 0–3 LPA band at **114** and 3–6 LPA at **117**. Employees earning **10+ LPA** have the lowest attrition at **89**, confirming that compensation is a primary retention driver. Over 85% of all exits occur below the 10 LPA threshold.
+
+### 3. Attrition by Job Role & Satisfaction Matrix
+The satisfaction matrix reveals:
+- **Sales Representatives**: 12 exits — highest by single role
+- **Sales Executives**: 27 exits with satisfaction scores spread across 1–4
+- **Laboratory Technicians**: 29 exits — second highest overall
+- **Research Scientists**: 28 exits
+- Roles with satisfaction score of **1 (Very Dissatisfied)** show disproportionately high attrition across all job types
+
+### 4. Age Group Distribution
+The **26–35 age band** dominates the workforce with **588 employees** in this cohort (when filtered). This is the organization's most productive age segment and also its highest attrition risk group — requiring targeted engagement and growth path interventions.
+
+### 5. Attrition by Gender
+The gender split shows approximately **60% Male** and **40% Female** attrition contributors, indicating attrition is not gender-isolated but reflects a broader organizational pattern.
+
+### 6. Attrition Trend by Experience
+The experience-trend line shows attrition spikes at the **0–5 year mark**, peaking around the **2–3 year experience point** (spike visible at value 12 on the trend chart). This is the classic "mid-junior exit window" — employees who have gained enough skills to be marketable but have not yet received enough growth investment to stay.
+
+---
+
+## 🛠 Tools & Technologies
+
+| Tool | Purpose |
+|---|---|
+| Microsoft Power BI Desktop | Dashboard development, DAX measures, data modelling |
+| Power Query (M Language) | Data ingestion, transformation, cleaning |
+| DAX (Data Analysis Expressions) | KPI calculations, conditional measures, matrix logic |
+| Microsoft Excel (.xlsx) | Source dataset |
+| Star Schema Modelling | Fact-dimension table relationships in Power BI model view |
+| GitHub | Version control and portfolio hosting |
+
+---
+
+## 📁 Folder Structure
